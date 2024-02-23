@@ -10,9 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="page-container">
-      <h1>Donate with hosted Checkout</h1>
-      <p>Donate to our project 💖</p>
-      <CheckoutForm uiMode="hosted" />
+
     </main>
   );
 }
