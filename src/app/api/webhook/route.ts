@@ -18,7 +18,7 @@ async function handleCheckoutSession(session: Stripe.Checkout.Session) {
   if (!superagentApiUrl) {
     throw new Error('The Superagent API URL is not defined in the environment variables.');
   }
-
+  console.log("metadata", checkoutSession.metadata)
   // The following code has been rewritten to include additional information in the POST request to the backend
   const metadataResponse = await fetch(`${superagentApiUrl}/payment`, {
     method: 'POST',
@@ -27,8 +27,8 @@ async function handleCheckoutSession(session: Stripe.Checkout.Session) {
       'Authorization': `Bearer ${checkoutSession.metadata?.api_key}`,
     },
     body: JSON.stringify({
-      user_customer_id: checkoutSession.metadata?.user_customer_id,
-      nickname: checkoutSession.metadata?.nickname
+      user_customer_id: checkoutSession?.metadata?.user_customer_id,
+      nickname: checkoutSession?.metadata?.nickname
     }),
   });
 
